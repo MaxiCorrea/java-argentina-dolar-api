@@ -13,7 +13,7 @@
 	<artifactId>java-argentina-dolar-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>java-argentina-dolar-api</name>
-	<description>Argentina Cotización Dolar API</description>
+	<description>Argentina Cotizacion Dolar API</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
