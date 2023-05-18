@@ -2,11 +2,6 @@ package com.argentina.dolar.api.main.domain;
 
 import java.math.BigDecimal;
 
-/**
- * 
- * @author mcorrea
- *
- */
 public class Dollar {
   
   private BigDecimal buys;
