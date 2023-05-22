@@ -1,11 +1,20 @@
 package com.argentina.dolar.api;
 
+import static java.util.Arrays.asList;
+import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.web.cors.CorsConfiguration.ALL;
 import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -15,7 +24,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication
-public class JavaArgentinaDolarApiApplication {
+public class JavaArgentinaDolarApiApplication extends WebSecurityConfigurerAdapter {
 
   public static void main(String[] args) {
     SpringApplication.run(JavaArgentinaDolarApiApplication.class, args);
@@ -43,4 +52,20 @@ public class JavaArgentinaDolarApiApplication {
         new ArrayList<>());
   }
 
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+      http.cors().and().csrf().disable();
+  }
+  
+  @Bean
+  public CorsConfigurationSource corsConfigurationSource() {
+      CorsConfiguration configuration = new CorsConfiguration();
+      configuration.setAllowedOrigins(asList(ALL));
+      configuration.setAllowedMethods(asList(GET.name(), POST.name()));
+      configuration.setAllowedHeaders(asList(ALL));
+      UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+      source.registerCorsConfiguration("/**", configuration);
+      return source;
+  }
+  
 }
