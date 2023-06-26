@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.argentina.dolar.api.news.economy.service.NewsEconomyService;
 import com.argentina.dolar.api.news.shared.News;
+import io.swagger.annotations.Api;
 
 @RestController
+@Api(tags = "News Economy")
 @RequestMapping("news")
 public class NewsEconomyController {
 

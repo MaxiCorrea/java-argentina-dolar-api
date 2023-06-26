@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.argentina.dolar.api.main.domain.Dollar;
 import com.argentina.dolar.api.main.service.DollarService;
+import io.swagger.annotations.Api;
 
 @RestController
+@Api(tags = "Home")
 @RequestMapping("main")
 public class MainController {
 
